@@ -1,0 +1,21 @@
+<?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    use RefreshDatabase;
+
+    public function test_guests_are_redirected_to_login(): void
+    {
+        $this->get('/')->assertRedirect(route('login'));
+    }
+
+    public function test_login_page_renders_in_arabic_rtl(): void
+    {
+        $this->get(route('login'))->assertOk()->assertSee('dir="rtl"', false);
+    }
+}
