@@ -125,6 +125,7 @@ class AppServiceProvider extends ServiceProvider
             'warranty_claim' => WarrantyClaim::class,
             'repair_order' => RepairOrder::class,
             'loyalty_transaction' => LoyaltyTransaction::class,
+            'website_inquiry' => \App\Modules\Website\Models\WebsiteInquiry::class,
         ]);
 
         Password::defaults(fn () => Password::min(10)->letters()->mixedCase()->numbers());

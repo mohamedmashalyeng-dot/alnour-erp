@@ -46,6 +46,8 @@ class Product extends Model
             'track_stock' => 'boolean',
             'warranty_months' => 'integer',
             'is_active' => 'boolean',
+            'show_on_website' => 'boolean',
+            'website_featured' => 'boolean',
         ];
     }
 
@@ -82,6 +84,12 @@ class Product extends Model
     public function inventory(): HasMany
     {
         return $this->hasMany(Inventory::class);
+    }
+
+    /** Products the public website may show (website visibility is never mass-assignable). */
+    public function scopeOnWebsite(Builder $q): Builder
+    {
+        return $q->where('is_active', true)->where('show_on_website', true);
     }
 
     public function scopeActive(Builder $q): Builder

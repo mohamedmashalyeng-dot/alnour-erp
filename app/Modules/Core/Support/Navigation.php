@@ -73,6 +73,12 @@ class Navigation
                 ['route' => 'categories.index', 'icon' => 'folder', 'label' => 'Categories', 'can' => 'categories.manage'],
                 ['route' => 'brands.index', 'icon' => 'star', 'label' => 'Brands', 'can' => 'brands.manage'],
             ]],
+            ['section' => 'Website', 'key' => 'website', 'items' => [
+                ['route' => 'website.inquiries', 'icon' => 'chat', 'label' => 'Website requests', 'can' => 'website.inquiries'],
+                ['route' => 'website.products', 'icon' => 'cube', 'label' => 'Website products', 'can' => 'website.manage'],
+                ['route' => 'website.settings', 'icon' => 'cog', 'label' => 'Website settings', 'can' => 'website.manage'],
+                ['route' => 'shop.home', 'icon' => 'eye', 'label' => 'View website', 'can' => 'website.manage', 'external' => true],
+            ]],
             ['section' => 'Administration', 'key' => 'admin', 'items' => [
                 ['route' => 'branches.index', 'icon' => 'building', 'label' => 'Branches', 'can' => 'branches.view', 'active' => 'branches.*'],
                 ['route' => 'users.index', 'icon' => 'users', 'label' => 'Users', 'can' => 'users.view'],

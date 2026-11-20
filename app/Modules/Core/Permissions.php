@@ -105,6 +105,9 @@ final class Permissions
         'repairs.manage' => 'optical',
         'loyalty.view' => 'optical',
         'loyalty.adjust' => 'optical',
+        // Public website
+        'website.manage' => 'website',
+        'website.inquiries' => 'website',
     ];
 
     /** @var array<string, list<string>> role => permissions ('*' = all) */
@@ -123,6 +126,7 @@ final class Permissions
             'reports.advanced', 'ai.insights', 'sync.review',
             'hr.view', 'hr.manage', 'hr.self',
             'prescriptions.view', 'warranty.view', 'warranty.claims', 'warranty.decide', 'repairs.view', 'repairs.manage', 'loyalty.view',
+            'website.manage', 'website.inquiries',
         ],
         'inventory-clerk' => [
             'dashboard.view', 'products.view', 'products.print-labels',
@@ -137,6 +141,7 @@ final class Permissions
             'returns.create', 'payments.record', 'cash.shift',
             'hr.self',
             'prescriptions.view', 'warranty.view', 'warranty.claims', 'repairs.view', 'repairs.manage', 'loyalty.view',
+            'website.inquiries',
         ],
         'optometrist' => [
             'dashboard.view', 'products.view', 'inventory.view', 'customers.view', 'customers.manage',

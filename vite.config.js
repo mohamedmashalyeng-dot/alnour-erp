@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js', 'resources/js/offline-pos.js'],
+            input: ['resources/css/app.css', 'resources/js/app.js', 'resources/js/offline-pos.js', 'resources/js/storefront.js'],
             refresh: true,
             fonts: [
                 bunny('Cairo', {

@@ -241,3 +241,15 @@ Payroll integration: when a payroll run is created, `HrService::monthSummary` gi
 * **Warranties:** `products.warranty_months` creates a `warranties` row per sold line (listener on `SaleCompleted`). Cancellation voids it; returns reduce or void it. Claims are checked against the period and decided by someone other than their opener. Replacements and refunds go through Returns.
 * **Repairs:** `repair_orders` with a status workflow. A charged delivery creates a normal invoice through `SaleService` using the configured service product, so tax, cash shifts and accounting apply. Warranty repairs are free.
 * **Loyalty:** `loyalty_transactions` is an immutable ledger with a unique (source, type) key. Points are earned per currency unit × tier (bronze ×1, silver ×1.25, gold ×1.5) and redeemed as a server-validated reward discount (balance, minimum, maximum % of the invoice). Cancellation reverses earned points and restores redeemed ones; returns reverse points pro rata. Points are not booked as a liability (see the production readiness report).
+
+---
+
+## Public website (`app/Modules/Website`)
+
+A product showcase connected live to the ERP catalog, inventory and branches.
+
+* **Routes:** `routes/website.php` (public, no login) and `routes/website-admin.php` (dashboard). With `WEBSITE_DOMAIN` set the site is served at that domain's root; otherwise under `/shop`. Point both domains at the same Laravel app on Hostinger.
+* **What is public:** only products with `is_active = true` and `show_on_website = true` (never services). `WebsiteCatalog::PUBLIC_COLUMNS` is the column whitelist: purchase/cost prices and suppliers are never selected. Availability = Σ(quantity − reserved) over active branches.
+* **Dashboard:** *Website products* (publish / feature, bulk, "publish all in stock"), *Website settings* (texts, phone, WhatsApp, socials, show prices/stock, site on/off), *Website requests* (orders, eye-exam bookings, questions). Writes go through `WebsiteService` / `InquiryService` with `Gate::authorize` (`website.manage`, `website.inquiries`) and are audited.
+* **Requests:** `website_inquiries`, created by the public form (throttled 5/min per IP, honeypot field, IP stored only as an HMAC). `message` is encrypted. Staff see requests for their branches plus unassigned ones.
+* **Front end:** `layouts/storefront.blade.php`, `resources/views/storefront/*`, `resources/js/storefront.js` (vanilla, no Livewire on public pages). SEO: per-page title/description/Open Graph, Product JSON-LD, `/sitemap.xml`.

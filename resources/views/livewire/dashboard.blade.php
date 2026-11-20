@@ -20,6 +20,23 @@
             && ! \App\Modules\Core\Support\Navigation::isHidden($user, $a['nav']))->take(8);
     @endphp
 
+    @if ($user->can('website.inquiries') && \Illuminate\Support\Facades\Route::has('website.inquiries'))
+        @php $newRequests = app(\App\Modules\Website\Services\InquiryService::class)->visibleQuery($user)->where('status', 'new')->count(); @endphp
+        @if ($newRequests > 0)
+            <a href="{{ route('website.inquiries') }}" class="mb-6 flex items-center gap-4 rounded-2xl border border-brand-200 bg-brand-50 p-4 transition hover:border-brand-300 hover:bg-brand-100/60">
+                <span class="relative flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand-500 text-ink-900">
+                    <x-icon name="chat" class="size-6" />
+                    <span class="absolute -end-1 -top-1 flex size-5 items-center justify-center rounded-full bg-rose-600 text-[11px] font-bold text-white">{{ $newRequests }}</span>
+                </span>
+                <span class="flex-1">
+                    <span class="block font-semibold text-ink-900">{{ trans_choice('{1} One new request from the website|[2,*] :count new requests from the website', $newRequests, ['count' => $newRequests]) }}</span>
+                    <span class="block text-sm text-slate-600">{{ __('Orders and eye-exam bookings waiting for a call.') }}</span>
+                </span>
+                <x-icon name="{{ app()->getLocale() === 'ar' ? 'chevron-left' : 'chevron-right' }}" class="size-5 text-brand-700" />
+            </a>
+        @endif
+    @endif
+
     @if ($quick->isNotEmpty())
         <section class="mb-6" aria-labelledby="quick-actions">
             <h2 id="quick-actions" class="mb-3 flex items-center gap-2 text-sm font-semibold text-slate-500"><x-icon name="bolt" class="size-4 text-brand-600" /> {{ __('Quick actions') }}</h2>

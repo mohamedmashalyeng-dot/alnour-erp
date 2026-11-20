@@ -26,6 +26,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/locale/{locale}', [SessionController::class, 'locale'])->name('locale');
 
+// Public website (registered first so a WEBSITE_DOMAIN root wins over the dashboard's "/").
+require __DIR__.'/website.php';
+
 Route::middleware('guest')->group(function () {
     Route::get('/login', Login::class)->name('login');
 });
@@ -82,4 +85,7 @@ Route::middleware('auth')->group(function () {
 
     // Eyewear module
     require __DIR__.'/optical.php';
+
+    // Public website — dashboard side
+    require __DIR__.'/website-admin.php';
 });

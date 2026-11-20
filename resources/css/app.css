@@ -113,6 +113,24 @@
 
     .skip-link { @apply sr-only rounded-lg bg-brand-500 px-4 py-2 font-semibold text-ink-900 focus:not-sr-only focus:fixed focus:top-3 focus:start-3 focus:z-[60]; }
 
+    /* ---------- Public website ---------- */
+    .site-container { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+    .site-nav-link { @apply rounded-full px-4 py-2 text-[15px] font-semibold text-ink-800 transition-colors hover:bg-slate-100 hover:text-ink-900; }
+    .site-nav-link-active { @apply bg-ink-900 text-white hover:bg-ink-800 hover:text-white; }
+    .section-head { @apply mb-8 flex flex-wrap items-end justify-between gap-4; }
+    .section-kicker { @apply mb-2 text-sm font-bold tracking-wide text-brand-600; }
+    .section-title { @apply text-2xl font-bold text-ink-900 sm:text-3xl; }
+    .section-link { @apply inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-800; }
+    .product-card { @apply relative overflow-hidden rounded-3xl bg-white ring-1 ring-slate-200/80 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/5 hover:ring-brand-200; }
+    .product-card-media { @apply relative flex aspect-square items-center justify-center bg-gradient-to-b from-slate-50 to-slate-100/60; }
+    .filter-title { @apply mb-2 text-sm font-bold text-ink-900; }
+    .filter-option { @apply flex cursor-pointer items-center gap-2.5 rounded-lg px-2 py-1.5 text-sm text-slate-700 hover:bg-slate-50; }
+    .choice { @apply block cursor-pointer; }
+    .choice-box { @apply flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm font-semibold text-slate-700 transition peer-checked:border-brand-500 peer-checked:bg-brand-50 peer-checked:text-brand-800 peer-focus-visible:ring-4 peer-focus-visible:ring-brand-100 hover:border-slate-300; }
+    .choice-sm .choice-box { @apply rounded-full px-3.5 py-1.5; }
+    .wa-float { @apply fixed bottom-5 end-5 z-50 flex size-14 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg shadow-emerald-600/30 transition hover:scale-105 hover:bg-emerald-600; }
+    .site [hidden] { display: none !important; }
+
     .brand-backdrop { background: radial-gradient(60rem 40rem at 85% -10%, rgb(254 128 31 / 0.28), transparent 60%), radial-gradient(40rem 30rem at 0% 110%, rgb(0 78 102 / 0.45), transparent 60%), var(--color-ink-900); }
 }
 

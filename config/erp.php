@@ -69,5 +69,28 @@ return [
         'loyalty_silver_threshold' => 1000,   // lifetime points → silver (×1.25)
         'loyalty_gold_threshold' => 5000,     // lifetime points → gold (×1.5)
         'repair_service_product_id' => null,  // service product used to invoice repairs
+        // Public website (edited from Website → Website settings)
+        'website_enabled' => true,
+        'website_show_prices' => true,
+        'website_show_stock' => true,
+        'website_hero_title' => 'اكتشف تجربة بصرية مميزة مع أفضل النظارات والعدسات الطبية والشمسية',
+        'website_hero_subtitle' => 'خدمة ما بعد البيع المجانية وخصومات حصرية لعملائنا',
+        'website_about' => 'النور للبصريات شركة رائدة في مجال النظارات والعناية بالعين في مصر. نقدم النظارات الطبية ونظارات الشمس والعدسات الطبية والعدسات اللاصقة والعيون الصناعية، مع استشارات طبية للعيون. مع النور للبصريات، سننير لك حياتك!',
+        'website_tagline' => 'نُنير لك حياتك',
+        'website_hours' => 'يومياً ما عدا الجمعة، من 10 صباحاً إلى 10 مساءً',
+        'website_phone' => '',
+        'website_whatsapp' => '',             // local or international number; shown as a WhatsApp button
+        'website_whatsapp_country_code' => '20',
+        'website_facebook' => '',
+        'website_instagram' => '',
+        'website_tiktok' => '',
+    ],
+
+    // Public website routing. With WEBSITE_DOMAIN set (e.g. alnouroptical.com) the site is served at that
+    // domain's root; otherwise it lives under /{prefix} on the ERP domain.
+    'website' => [
+        'domain' => env('WEBSITE_DOMAIN'),
+        'prefix' => env('WEBSITE_PREFIX', 'shop'),
+        'per_page' => 24,
     ],
 ];

@@ -99,7 +99,8 @@
                             <div class="nav-item group" x-show="visible('{{ $item['route'] }}')" @if ($item['hidden'] && ! $item['active']) x-cloak @endif>
                                 <a href="{{ route($item['route']) }}" @class(['nav-link', 'nav-link-active' => $item['active']])
                                    :class="isHidden('{{ $item['route'] }}') && active !== '{{ $item['route'] }}' ? 'opacity-40' : ''"
-                                   @if ($item['active']) aria-current="page" @endif>
+                                   @if ($item['active']) aria-current="page" @endif
+                                   @if (! empty($item['external'])) target="_blank" rel="noopener" @endif>
                                     <x-icon :name="$item['icon']" class="size-5 shrink-0" />
                                     <span class="truncate">{{ __($item['label']) }}</span>
                                 </a>
